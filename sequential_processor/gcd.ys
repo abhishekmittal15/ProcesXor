@@ -1,0 +1,21 @@
+irmovq $999,%rsp
+call main
+halt
+loop:
+rrmovq %rcx,%rdx
+subq %rax,%rdx
+je ans
+jl csmallerthana
+subq %rax,%rcx
+jmp loop
+csmallerthana:
+subq %rcx,%rax
+jmp loop
+ans:
+rrmovq %rax,%rbx
+ret
+main:
+irmovq $10,%rax
+irmovq $5,%rcx
+call loop
+ret
